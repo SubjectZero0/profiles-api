@@ -3,9 +3,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
-from django.contrib.auth.hashers import make_password
-# Create your models here.
 
+
+# Create your models here.
 
 class UserProfileManager(BaseUserManager, models.Manager):
     #Manager for user profiles
@@ -21,7 +21,6 @@ class UserProfileManager(BaseUserManager, models.Manager):
         user.set_password(password)
         user.save(using=self._db)
         
-
         return user
 
     def create_superuser(self, email, name, password):
@@ -32,6 +31,8 @@ class UserProfileManager(BaseUserManager, models.Manager):
         user.save(using=self._db)
 
         return user
+
+
 class UserProfile(AbstractBaseUser, PermissionsMixin, models.Model):
     #database model for users in the system
 
